@@ -1,6 +1,6 @@
 from . import Provider
 from .Providers import (
-    Ezcht,
+    Xiaor,
     You,
     Bing,
     Yqcloud,
@@ -27,7 +27,8 @@ from .Providers import (
     Better,
     Alpha,
     Nino,
-    Lsdev
+    Lsdev,
+    Xiaor
 )
 
 Palm = Bard
