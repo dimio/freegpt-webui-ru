@@ -30,7 +30,9 @@ from .Providers import (
     Lsdev,
     Xiaor,
     Jayshen,
-    Gpppt
+    Gpppt,
+    DFEHub,
+    Acytoo
 )
 
 Palm = Bard

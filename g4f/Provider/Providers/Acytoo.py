@@ -2,7 +2,7 @@ import os, requests
 from ...typing import sha256, Dict, get_type_hints
 import json
 
-url = "https://www.aitianhu.com/api/chat-process"
+url = "https://chat.acytoo.com/api/completions"
 model = ['gpt-3.5-turbo']
 supports_stream = True
 needs_auth = False
@@ -17,17 +17,22 @@ def _create_completion(model: str, messages: list, stream: bool, **kwargs):
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
     }
     data = {
-        "prompt": base,
-        "options": {},
-        "systemMessage": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
-        "temperature": 0.8,
-        "top_p": 1
+        "key": "",
+        "model": "gpt-3.5-turbo",
+        "messages": [
+            {
+                "role": "user",
+                "content": base,
+                "createdAt": 1688518523500
+            }
+        ],
+        "temperature": 1,
+        "password": ""
     }
-    response = requests.post(url, headers=headers, json=data, stream=True)
+
+    response = requests.post(url, headers=headers, data=json.dumps(data), stream=True)
     if response.status_code == 200:
-        lines = response.text.strip().split('\n')
-        res = json.loads(lines[-1])
-        yield res['text']
+        yield response.text
     else:
         print(f"Error Occurred::{response.status_code}")
         return None
