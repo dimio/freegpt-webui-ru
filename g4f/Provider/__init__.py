@@ -1,11 +1,11 @@
 from . import Provider
 from .Providers import (
+    Aitianhu,
     Xiaor,
     You,
     Bing,
     Yqcloud,
     Theb,
-    Aichat,
     Bard,
     Vercel,
     Forefront,
@@ -28,7 +28,9 @@ from .Providers import (
     Alpha,
     Nino,
     Lsdev,
-    Xiaor
+    Xiaor,
+    Jayshen,
+    Gpppt
 )
 
 Palm = Bard
