@@ -1,0 +1,180 @@
+name: FreeGPT by Neurogen - Portable Versions
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'feature/portable'
+
+jobs:
+
+##################################################################################
+
+  build-freegpt-windows-portable-latest:
+    name: Build Windows portable
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' 
+
+    - name: python version
+      run: python3 --version
+
+    - name: pip version
+      run: pip --version
+
+#    - name: pyinstaller install
+#      run:  pip install pyinstaller
+      
+#    - name: pyinstaller version
+#      run:  pyinstaller --version
+
+    - name: nuitka install
+      run:  pip install nuitka
+
+    - name: nuitka version
+      run:  python3 -m nuitka --version
+
+    - name: Install Requirements
+      run: |
+        pip install -U setuptools
+        pip install -r requirements.txt
+
+      #--add-binary ".\bin;.\bin"    -- for .so, .dlyb, .dll, .exe files 
+      #--add-data 'src/README.txt:.' -- for resources
+      # ; for windows, : for nix     -- by https://stackoverflow.com/questions/62017384/adding-json-files-to-an-exe-file-using-pyinstaller
+    #- name: Build of Portable WebUI (pyinstaller)
+    #  run:  pyinstaller --onefile --name "Portable FreeGPT WebUI by Neurogen" --icon=".github/pyinstaller/gpt.ico" --version-file=".github/pyinstaller/win32version.txt" --distpath ./dist --add-data "./config.json;." --add-data "./client;client" ./run.py  
+ 
+    - name: Build of Portable WebUI (nuitka)
+      run:  python3 -m nuitka --onefile ./run.py --assume-yes-for-downloads --output-dir=dist --company-name="Neurogen" --file-version="0.0.0.0" --product-version="0.0.0.0" --product-name="Portable FreeGPT WebUI by Neurogen" --file-description="Portable FreeGPT WebUI by Neurogen" --copyright="2023 Neurogen, EpicMorg" --trademarks="Portable FreeGPT WebUI by Neurogen" --output-filename="Portable FreeGPT WebUI by Neurogen" --windows-icon-from-ico=./.github/portable/gpt.ico --include-data-files=./config.json=config.json --include-data-dir=./client/=client  
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Windows Portable FreeGPT WebUI by Neurogen
+        path: dist/*WebUI*.exe 
+
+#    - name: Build of Portable Endpoint (pyinstaller)
+#      run:  pyinstaller --onefile --name "Portable FreeGPT Endpoint by Neurogen" --icon=".github/pyinstaller/gpt.ico" --version-file=".github/pyinstaller/win32version.txt" --distpath ./dist ./endpoint.py  
+
+    - name: Build of Portable Endpoint (nuitka)
+      run:  python3 -m nuitka --onefile ./endpoint.py --assume-yes-for-downloads --output-dir=dist --company-name="Neurogen" --file-version="0.0.0.0" --product-version="0.0.0.0"  --product-name="Portable FreeGPT Endpoint by Neurogen" --file-description="Portable FreeGPT Endpoint by Neurogen" --copyright="2023 Neurogen, EpicMorg" --trademarks="Portable FreeGPT Endpoint by Neurogen" --output-filename="Portable FreeGPT Endpoint by Neurogen" --windows-icon-from-ico=./.github/portable/gpt.ico
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Windows Portable FreeGPT Endpoint by Neurogen
+        path: dist/*Endpoint*.exe 
+
+##################################################################################
+
+  build-freegpt-linux-portable-latest:
+    name: Build Linux portable
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' 
+
+    - name: python version
+      run: python3 --version
+
+    - name: pip version
+      run: pip --version
+
+#    - name: pyinstaller install
+#      run:  pip install pyinstaller
+      
+#    - name: pyinstaller version
+#      run:  pyinstaller --version
+
+    - name: nuitka install
+      run:  pip install nuitka
+
+    - name: nuitka version
+      run:  python3 -m nuitka --version
+
+    - name: Install Requirements
+      run: |
+        pip install -U setuptools
+        pip install -r requirements.txt
+
+    - name: Build of Portable WebUI (nuitka)
+      run:  python3 -m nuitka --onefile ./run.py --assume-yes-for-downloads --output-dir=dist --company-name="Neurogen" --file-version="0.0.0.0" --product-version="0.0.0.0" --product-name="Portable FreeGPT WebUI by Neurogen.bin" --file-description="Portable FreeGPT WebUI by Neurogen" --copyright="2023 Neurogen, EpicMorg" --trademarks="Portable FreeGPT WebUI by Neurogen" --output-filename="Portable FreeGPT WebUI by Neurogen" --linux-onefile-icon=./.github/portable/gpt.png --include-data-files=./config.json=config.json --include-data-dir=./client/=client  
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Linux Portable FreeGPT WebUI by Neurogen
+        path: dist/*WebUI* 
+
+    - name: Build of Portable Endpoint (nuitka)
+      run:  python3 -m nuitka --onefile ./endpoint.py --assume-yes-for-downloads --output-dir=dist --company-name="Neurogen" --file-version="0.0.0.0" --product-version="0.0.0.0"  --product-name="Portable FreeGPT Endpoint by Neurogen.bin" --file-description="Portable FreeGPT Endpoint by Neurogen" --copyright="2023 Neurogen, EpicMorg" --trademarks="Portable FreeGPT Endpoint by Neurogen" --output-filename="Portable FreeGPT Endpoint by Neurogen" --linux-onefile-icon=./.github/portable/gpt.png
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Linux Portable FreeGPT Endpoint by Neurogen
+        path: dist/*Endpoint* 
+
+##################################################################################
+
+  build-freegpt-macos-portable-latest:
+    name: Build MacOS portable
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' 
+
+    - name: python version
+      run: python3 --version
+
+    - name: pip version
+      run: pip --version
+
+#    - name: pyinstaller install
+#      run:  pip install pyinstaller
+      
+#    - name: pyinstaller version
+#      run:  pyinstaller --version
+
+    - name: nuitka install + imageio dependency
+      run:  pip install nuitka imageio
+
+    - name: nuitka version
+      run:  python3 -m nuitka --version
+
+    - name: Install Requirements
+      run: |
+        pip install -U setuptools
+        pip install -r requirements.txt
+
+    - name: Build of Portable WebUI (nuitka)
+      run:  python3 -m nuitka --onefile ./run.py --assume-yes-for-downloads --output-dir=dist --company-name="Neurogen" --macos-app-version="0.0.0.0" --file-version="0.0.0.0" --product-version="0.0.0.0" --product-name="Portable FreeGPT WebUI by Neurogen.app" --file-description="Portable FreeGPT WebUI by Neurogen" --copyright="2023 Neurogen, EpicMorg" --trademarks="Portable FreeGPT WebUI by Neurogen" --output-filename="Portable FreeGPT WebUI by Neurogen" --macos-app-icon=./.github/portable/gpt.png --include-data-files=./config.json=config.json --include-data-dir=./client/=client  
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: MacOS Portable FreeGPT WebUI by Neurogen
+        path: dist/*WebUI* 
+
+    - name: Build of Portable Endpoint (nuitka)
+      run:  python3 -m nuitka --onefile ./endpoint.py --assume-yes-for-downloads --output-dir=dist --company-name="Neurogen" --macos-app-version="0.0.0.0" --file-version="0.0.0.0" --product-version="0.0.0.0"  --product-name="Portable FreeGPT Endpoint by Neurogen.app" --file-description="Portable FreeGPT Endpoint by Neurogen" --copyright="2023 Neurogen, EpicMorg" --trademarks="Portable FreeGPT Endpoint by Neurogen" --output-filename="Portable FreeGPT Endpoint by Neurogen" --macos-app-icon=./.github/portable/gpt.png
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: MacOS Portable FreeGPT Endpoint by Neurogen
+        path: dist/*Endpoint* 
+
+##################################################################################
+

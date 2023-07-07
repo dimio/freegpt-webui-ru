@@ -5,13 +5,30 @@ from json import load
 import webbrowser
 from gevent import pywsgi
 import socket
+import os
 
 
 if __name__ == '__main__':
 
     # Load configuration from config.json
-    config = load(open('config.json', 'r'))
-    site_config = config['site_config']
+    ConfigJson = 'config.json'
+    if os.path.isfile(ConfigJson) and os.access(ConfigJson, os.R_OK):
+        print("Config file \"config.json\" is exists and is readable. Loading...")
+        config = load(open('config.json', 'r'))
+        site_config = config['site_config']
+    else:
+        print("Config file \"config.json\" is missing or not readable. Don't worry. Loading default settings...")
+        site_config = {
+        'host': '0.0.0.0',
+        'port': 1338,
+        'debug': False
+         }
+        config = {
+        'host': '0.0.0.0',
+        'port': 1338,
+        'debug': False,
+        'use_auto_proxy': False
+         }
 
     # Set up the website routes
     site = Website(app)
