@@ -13,7 +13,7 @@ RU: Доступ к ChatGPT с вашего ПК без VPN. Интерфейс 
 - Контекст беседы
 - Режим endpoint для работы с API
 
-[Инструкции по установке и запуску для Windows, Linux и MacOS](https://github.com/Em1tSan/freegpt-neurogen-docs), которые создал пользователь [нашего чата в Telegram](https://t.me/neurogen_chat)
+[Инструкции по установке и запуску для Windows, Linux и MacOS](/.github/docs), которые создал пользователь [нашего чата в Telegram](https://t.me/neurogen_chat)
 
 
 
