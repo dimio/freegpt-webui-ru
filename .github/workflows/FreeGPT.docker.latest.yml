@@ -1,0 +1,24 @@
+name: FreeGPT by Neurogen - Latest Image
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+
+##################################################################################
+
+  build-freegpt-image-latest:
+    name: Build and deploy latest version every commit
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Log into registry
+      run:  echo "${{ secrets.DOCKER_SERVER_KEY }}" | docker login -u "${{ secrets.DOCKER_SERVER_LOGIN }}" --password-stdin
+
+    - name: Build and Deploy FreeGPT by Neurogen (latest)
+      run:  cd .github/docker/latest && make build && make deploy
+      
+##################################################################################
