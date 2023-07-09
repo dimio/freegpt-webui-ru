@@ -44,7 +44,7 @@ class Model:
     class gpt_4:
         name: str = 'gpt-4'
         base_provider: str = 'openai'
-        best_provider: Provider.Provider = Provider.DFEHub
+        best_provider: Provider.Provider = random.choice([Provider.DFEHub, Provider.Jayshen])
         best_providers: list = [Provider.Bing, Provider.Lockchat]
     
     class gpt_4_0613:
