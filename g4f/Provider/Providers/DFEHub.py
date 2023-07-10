@@ -3,7 +3,7 @@ import requests
 from ...typing import sha256, Dict, get_type_hints
 
 url = "https://chat.dfehub.com"
-model = ['gpt-3.5-turbo', 'gpt-3.5-turbo-16k', 'gpt-4']
+model = ['gpt-3.5-turbo', 'gpt-3.5-turbo-16k', 'gpt-4', 'gpt-4-0613']
 supports_stream = True
 needs_auth = False
 

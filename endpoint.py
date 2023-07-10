@@ -98,7 +98,7 @@ def get_working_provider(model, streaming):
     return None
 
 
-provider = DFEHub
+provider = Easychat
 model_name = 'gpt-3.5-turbo'
 
 @app.route("/v1/models", methods=['GET'])
@@ -119,13 +119,13 @@ def chat_completions():
     global provider
     streaming = request.json.get('stream', False)
     #print(request.json) # не будем выводить клиентам, оставим для дебага
-    model = request.json.get('model', model_name)
+    model = request.json.get('model')
     messages = request.json.get('messages')
 
     try:
         response = ChatCompletion.create(model=model, stream=streaming, messages=messages, provider=provider)
     except:
-        provider = get_working_provider(model_name, request.json.get('stream', False))
+        provider = get_working_provider(model, request.json.get('stream', False))
         if provider is None:
             # Если нет работающего провайдера, возвращаем ошибку
             raise Exception('No working provider available')
@@ -135,7 +135,7 @@ def chat_completions():
             try:
                 response = ChatCompletion.create(model=model, stream=streaming, messages=messages, provider=provider)
             except:
-                provider = get_working_provider(model_name, request.json.get('stream', False))
+                provider = get_working_provider(model, request.json.get('stream', False))
                 if provider is None:
                     # Если нет работающего провайдера, возвращаем ошибку
                     raise Exception('No working provider available')
