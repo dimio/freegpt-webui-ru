@@ -98,7 +98,7 @@ def get_working_provider(model, streaming):
     return None
 
 
-provider = Easychat
+provider = DFEHub
 model_name = 'gpt-3.5-turbo'
 
 @app.route("/v1/models", methods=['GET'])
@@ -118,7 +118,7 @@ def models():
 def chat_completions():
     global provider
     streaming = request.json.get('stream', False)
-    #print(request.json) # не будем выводить клиентам, оставим для дебага
+    print(request.json) # не будем выводить клиентам, оставим для дебага
     model = request.json.get('model')
     messages = request.json.get('messages')
 
