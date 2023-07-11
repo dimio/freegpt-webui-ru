@@ -11,29 +11,29 @@ class Model:
     class gpt_35_turbo:
         name: str = 'gpt-3.5-turbo'
         base_provider: str = 'openai'
-        best_provider: Provider.Provider = Provider.Easychat
-        #best_provider: Provider.Provider = random.choice([Provider.Aitianhu, Provider.DFEHub,])
-        best_providers: list = [Provider.Forefront, Provider.Lockchat, Provider.Yqcloud, Provider.Better]
+        #best_provider: Provider.Provider = Provider.Easychat
+        best_provider: Provider.Provider = random.choice([Provider.Aitianhu, Provider.Easychat, Provider.Gravityengine, Provider.GetGpt])
+        best_providers: list = [Provider.Easychat, Provider.Gravityengine, Provider.GetGpt]
 
     class gpt_35_turbo_0613:
         name: str = 'gpt-3.5-turbo-0613'
         base_provider: str = 'openai'
-        best_provider: Provider.Provider = Provider.Easychat
-        #best_provider: Provider.Provider = random.choice([Provider.Easychat])
+        #best_provider: Provider.Provider = Provider.Easychat
+        best_provider: Provider.Provider = random.choice([Provider.Fakeopen])
         
 
     class gpt_35_turbo_16k_0613:
         name: str = 'gpt-3.5-turbo-16k-0613'
         base_provider: str = 'openai'
-        best_provider: Provider.Provider = Provider.Easychat
-        #best_provider: Provider.Provider = random.choice([Provider.Easychat])
-        best_providers: list = [Provider.Easychat, Provider.Xiaor]
+        #best_provider: Provider.Provider = Provider.Easychat
+        best_provider: Provider.Provider = random.choice([Provider.Easychat])
+        best_providers: list = [Provider.Easychat]
 
     class gpt_35_turbo_16k:
         name: str = 'gpt-3.5-turbo-16k'
         base_provider: str = 'openai'
-        best_provider: Provider.Provider = Provider.Easychat
-        #best_provider: Provider.Provider = random.choice([Provider.Easychat])
+        #best_provider: Provider.Provider = Provider.Easychat
+        best_provider: Provider.Provider = random.choice([Provider.Easychat])
 
 
     class gpt_dev:

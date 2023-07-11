@@ -4,102 +4,13 @@ import random
 import time
 from gevent import pywsgi
 import socket
-
-from g4f.Provider import (
-    Aitianhu,
-    Xiaor,
-    You,
-    Bing,
-    Yqcloud,
-    Theb,
-    Bard,
-    Vercel,
-    Forefront,
-    Lockchat,
-    Liaobots,
-    H2o,
-    ChatgptLogin,
-    DeepAi,
-    GetGpt,
-    Pierangelo,
-    Gravityengine,
-    ChatgptAi,
-    ChatgptLogin,
-    Phind,
-    Easychat,
-    hteyun,
-    Weuseing,
-    Fakeopen,
-    Better,
-    Alpha,
-    Nino,
-    Lsdev,
-    Xiaor,
-    Jayshen,
-    Aws,
-    DFEHub,
-    Acytoo
-)
-
 from flask import Flask, request
 from flask_cors import CORS
 
-from g4f import ChatCompletion, Provider, Model
+from g4f import ChatCompletion, Provider
 
 app = Flask(__name__)
 CORS(app)
-
-providers = [
-    Aitianhu,
-    Xiaor,
-    #You,
-    Bing,
-    Yqcloud,
-  #  Theb,
-  #  Bard,
- #   Vercel,
-  #  Forefront,
- #   Lockchat,
-    Liaobots,
-  #  H2o,
-    ChatgptLogin,
-    DeepAi,
-    GetGpt,
-    Pierangelo,
-   # Gravityengine,
-   # ChatgptAi,
-   # ChatgptLogin,
-    Phind,
-    Easychat,
-   # hteyun,
-   # Weuseing,
-   # Fakeopen,
-    Better,
-    Alpha,
-    #Nino,
-    Lsdev,
-    #Xiaor,
-    Jayshen,
-    Aws,
-    DFEHub,
-    Acytoo
-]
-
-
-def get_working_provider(model, streaming):
-    for provider in providers:
-        try:
-            ChatCompletion.create(model=model, stream=streaming, messages=[
-                                     {"role": "user", "content": "Привет!"}], provider=provider)
-            return provider
-        except Exception:
-            continue
-
-    return None
-
-
-provider = DFEHub
-model_name = 'gpt-3.5-turbo'
 
 @app.route("/v1/models", methods=['GET'])
 def models():
@@ -116,30 +27,17 @@ def models():
 @app.route("/v1/chat/completions", methods=['POST'])
 @app.route("/", methods=['POST'])
 def chat_completions():
-    global provider
     streaming = request.json.get('stream', False)
-    print(request.json) # не будем выводить клиентам, оставим для дебага
-    model = request.json.get('model')
+    model = request.json.get('model', 'gpt-3.5-turbo')
     messages = request.json.get('messages')
 
-    try:
-        response = ChatCompletion.create(model=model, stream=streaming, messages=messages, provider=provider)
-    except:
-        provider = get_working_provider(model, request.json.get('stream', False))
-        if provider is None:
-            # Если нет работающего провайдера, возвращаем ошибку
-            raise Exception('No working provider available')
-        response = ChatCompletion.create(model=model, stream=streaming, messages=messages, provider=provider)
+    response = ChatCompletion.create(model=model, stream=streaming,
+                                     messages=messages)
+
     if not streaming:
         while 'curl_cffi.requests.errors.RequestsError' in response:
-            try:
-                response = ChatCompletion.create(model=model, stream=streaming, messages=messages, provider=provider)
-            except:
-                provider = get_working_provider(model, request.json.get('stream', False))
-                if provider is None:
-                    # Если нет работающего провайдера, возвращаем ошибку
-                    raise Exception('No working provider available')
-                response = ChatCompletion.create(model=model, stream=streaming, messages=messages, provider=provider)
+            response = ChatCompletion.create(model=model, stream=streaming,
+                                             messages=messages)
 
         completion_timestamp = int(time.time())
         completion_id = ''.join(random.choices(
@@ -204,23 +102,15 @@ def chat_completions():
 
     return app.response_class(stream(), mimetype='text/event-stream')
 
-
 if __name__ == '__main__':
     site_config = {
         'host': '0.0.0.0',
         'port': 1337,
-        'debug': True
+        'debug': False
     }
-
-    
     hostname = socket.gethostname()
     ip_address = socket.gethostbyname(hostname)
-
-    # Run the Flask server by WSGI
     print(f"Running on http://127.0.0.1:{site_config['port']}")
     print(f"Running on http://{ip_address}:{site_config['port']}")
-
     server = pywsgi.WSGIServer(('0.0.0.0', site_config['port']), app)
     server.serve_forever()
-
-    print(f"Closing {ip_address}:{site_config['port']}")

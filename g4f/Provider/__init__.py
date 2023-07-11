@@ -1,7 +1,6 @@
 from . import Provider
 from .Providers import (
     Aitianhu,
-    Xiaor,
     You,
     Bing,
     Yqcloud,
@@ -21,14 +20,11 @@ from .Providers import (
     ChatgptLogin,
     Phind,
     Easychat,
-    hteyun,
-    Weuseing,
     Fakeopen,
     Better,
     Alpha,
     Nino,
     Lsdev,
-    Xiaor,
     Jayshen,
     Aws,
     DFEHub,
