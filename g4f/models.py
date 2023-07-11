@@ -11,7 +11,7 @@ class Model:
     class gpt_35_turbo:
         name: str = 'gpt-3.5-turbo'
         base_provider: str = 'openai'
-        best_provider: Provider.Provider = Provider.DFEHub
+        best_provider: Provider.Provider = Provider.Easychat
         #best_provider: Provider.Provider = random.choice([Provider.Aitianhu, Provider.DFEHub,])
         best_providers: list = [Provider.Forefront, Provider.Lockchat, Provider.Yqcloud, Provider.Better]
 
