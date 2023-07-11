@@ -15,7 +15,7 @@ from .Providers import (
     ChatgptLogin,
     DeepAi,
     GetGpt,
-    Mishalsgpt,
+    Pierangelo,
     Gravityengine,
     ChatgptAi,
     ChatgptLogin,
@@ -30,7 +30,7 @@ from .Providers import (
     Lsdev,
     Xiaor,
     Jayshen,
-    Gpppt,
+    Aws,
     DFEHub,
     Acytoo
 )

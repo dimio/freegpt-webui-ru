@@ -4,7 +4,7 @@ import json
 from ...typing import sha256, Dict, get_type_hints
 
 url = 'https://www.jayshen.xyz'
-model = ['gpt-3.5-turbo']
+model = ['gpt-3.5-turbo', 'gpt-4']
 supports_stream = True
 needs_auth = False
 
@@ -15,6 +15,8 @@ def _create_completion(model: str, messages: list, stream: bool, temperature: fl
     data = {
         'model': model,
         'temperature': 0.5,
+        'max_tokens': '8000',
+        'stream': stream,
         'presence_penalty': 0,
         'messages': messages,
     }
