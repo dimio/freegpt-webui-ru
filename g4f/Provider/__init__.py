@@ -28,7 +28,10 @@ from .Providers import (
     Jayshen,
     Aws,
     DFEHub,
-    Acytoo
+    Acytoo,
+    AiService,
+    BingHuan,
+    Wewordle
 )
 
 Palm = Bard
