@@ -12,7 +12,7 @@ class Model:
         name: str = 'gpt-3.5-turbo'
         base_provider: str = 'openai'
         #best_provider: Provider.Provider = Provider.Easychat
-        best_provider: Provider.Provider = random.choice([Provider.Aitianhu, Provider.Easychat, Provider.Gravityengine, Provider.GetGpt])
+        best_provider: Provider.Provider = random.choice([Provider.Aitianhu, Provider.Easychat, Provider.GetGpt])
         best_providers: list = [Provider.Easychat, Provider.Gravityengine, Provider.GetGpt]
 
     class gpt_35_turbo_0613:
@@ -44,7 +44,7 @@ class Model:
     class gpt_4:
         name: str = 'gpt-4'
         base_provider: str = 'openai'
-        best_provider: Provider.Provider = Provider.DFEHub
+        best_provider: Provider.Provider = Provider.BingHuan
         best_providers: list = [Provider.Bing, Provider.Lockchat]
     
     class gpt_4_0613:
