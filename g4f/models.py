@@ -41,13 +41,19 @@ class Model:
         name: str = 'beaver'
         base_provider: str = 'poe'
         #best_provider: Provider.Provider = Provider.Easychat
-        best_provider: Provider.Provider = random.choice([Provider.B88])
+        best_provider: Provider.Provider = random.choice([Provider.V50])
 
     class a2_100k:
         name: str = 'a2_100k'
         base_provider: str = 'poe'
         #best_provider: Provider.Provider = Provider.Easychat
-        best_provider: Provider.Provider = random.choice([Provider.B88])
+        best_provider: Provider.Provider = random.choice([Provider.V50])
+
+    class a2_2:
+        name: str = 'a2_2'
+        base_provider: str = 'poe'
+        #best_provider: Provider.Provider = Provider.Easychat
+        best_provider: Provider.Provider = random.choice([Provider.V50])
 
 
     class gpt_dev:
@@ -216,6 +222,7 @@ class ModelUtils:
 
         'beaver': Model.beaver,
         'a2_100k': Model.a2_100k,
+        'a2_2': Model.a2_2,
         
         'claude-instant-v1-100k': Model.claude_instant_v1_100k,
         'claude-v1-100k': Model.claude_v1_100k,

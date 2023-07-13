@@ -34,7 +34,8 @@ from .Providers import (
     Wewordle,
     B88,
     Kiask,
-    Zeabur
+    Zeabur,
+    V50
 
 )
 
