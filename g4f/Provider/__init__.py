@@ -31,7 +31,11 @@ from .Providers import (
     Acytoo,
     AiService,
     BingHuan,
-    Wewordle
+    Wewordle,
+    B88,
+    Kiask,
+    Zeabur
+
 )
 
 Palm = Bard
