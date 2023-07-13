@@ -12,7 +12,7 @@ class Model:
         name: str = 'gpt-3.5-turbo'
         base_provider: str = 'openai'
         #best_provider: Provider.Provider = Provider.Easychat
-        best_provider: Provider.Provider = random.choice([Provider.Aitianhu, Provider.Easychat, Provider.GetGpt, Provider.AiService, Provider.Wewordle])
+        best_provider: Provider.Provider = random.choice([Provider.GetGpt, Provider.AiService, Provider.Wewordle, Provider.Aitianhu,])
         best_providers: list = [Provider.Easychat, Provider.Gravityengine, Provider.GetGpt]
 
     class gpt_35_turbo_0613:
@@ -33,7 +33,7 @@ class Model:
         name: str = 'gpt-3.5-turbo-16k'
         base_provider: str = 'openai'
         #best_provider: Provider.Provider = Provider.Easychat
-        best_provider: Provider.Provider = random.choice([Provider.Easychat, Provider.Zeabur])
+        best_provider: Provider.Provider = random.choice([Provider.Kiask, Provider.Zeabur])
 
     #POE
 

@@ -4,7 +4,7 @@ from ...typing import get_type_hints
 
 url = "https://aiservice.vercel.app/api/chat/answer"
 model = ['gpt-3.5-turbo']
-supports_stream = False
+supports_stream = True
 needs_auth = False
 
 
@@ -25,7 +25,7 @@ def _create_completion(model: str, messages: list, stream: bool, **kwargs):
     data = {
         "input": base
     }
-    response = requests.post(url, headers=headers, json=data)
+    response = requests.post(url, headers=headers, json=data, stream=True)
     if response.status_code == 200:
         _json = response.json()
         yield _json['data']

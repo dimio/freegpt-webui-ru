@@ -33,7 +33,7 @@ def _create_completion(model: str, messages: list, stream: bool, **kwargs):
     data = {
         'model': model,
         'temperature': 0.7,
-        'max_tokens': '8000',
+        'max_tokens': '16000',
         'presence_penalty': 0,
         'messages': messages,
     }
