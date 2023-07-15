@@ -35,7 +35,7 @@ class Model:
         base_provider: str = 'openai'
         #best_provider: Provider.Provider = Provider.Easychat
         best_provider: Provider.Provider = random.choice([Provider.Kiask, Provider.Zeabur])
-        best_providers: list = [Provider.Kiask, Provider.Zeabur]
+        best_providers: list = [Provider.Zeabur]
 
     #POE
 
