@@ -13,7 +13,7 @@ class Model:
         base_provider: str = 'openai'
         #best_provider: Provider.Provider = Provider.Easychat
         best_provider: Provider.Provider = random.choice([Provider.GetGpt, Provider.AiService, Provider.Easychat, Provider.Aitianhu,])
-        best_providers: list = [Provider.GetGpt, Provider.AiService, Provider.Easychat, Provider.Aitianhu]
+        best_providers: list = [Provider.AiService, Provider.Easychat, Provider.Aitianhu]
 
     class gpt_35_turbo_0613:
         name: str = 'gpt-3.5-turbo-0613'
