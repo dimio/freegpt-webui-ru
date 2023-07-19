@@ -267,13 +267,17 @@ Jul 19 16:17:24 akrhin.ru systemd[1]: Started A high performance web server and 
 Закрываем порты для внешки:
 
 ```bash
-# Если используется iptables
-➜  ~ sudo iptables -A INPUT -p tcp --dport 1337 -j DROP
+# iptables для Chat
+➜  ~ sudo iptables -A INPUT -p tcp -s localhost --dport 1338 -j ACCEPT
+➜  ~ sudo iptables -A INPUT -p udp -s localhost --dport 1338 -j ACCEPT
 ➜  ~ sudo iptables -A INPUT -p tcp --dport 1338 -j DROP
+➜  ~ sudo iptables -A INPUT -p udp --dport 1338 -j DROP
 
-# Если используется ufw
-➜  ~ sudo ufw deny 1337
-➜  ~ sudo ufw deny 1338
+# iptables для Endpoint
+➜  ~ sudo iptables -A INPUT -p tcp -s localhost --dport 1337 -j ACCEPT
+➜  ~ sudo iptables -A INPUT -p udp -s localhost --dport 1337 -j ACCEPT
+➜  ~ sudo iptables -A INPUT -p tcp --dport 1337 -j DROP
+➜  ~ sudo iptables -A INPUT -p udp --dport 1337 -j DROP
 ```
 
 Автообновление сертификата certbot и проекта:
