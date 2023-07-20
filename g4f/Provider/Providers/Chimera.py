@@ -2,15 +2,48 @@ import re
 import os
 import openai
 import openai.error
+import json
+import os
+import logging
+import sys
+import commentjson as json
 from dotenv import load_dotenv
 from ...typing import sha256, Dict, get_type_hints
 
 load_dotenv()
-#openai.api_key = '_hvFFPS4VPZGn2PKFAO7D663hO74W_IQyZ0FekFdlsY'
-#openai.api_base = "https://chimeragpt.adventblocks.cc/v1"
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
-openai.api_base = os.getenv('OPENAI_API_BASE')
+__all__ = [
+    "my_api_key",
+    "authflag",
+    "auth_list",
+    "dockerflag",
+    "retrieve_proxy",
+    "log_level",
+    "advance_docs",
+    "update_doc_config",
+    "usage_limit",
+    "multi_api_key",
+    "server_name",
+    "server_port",
+    "share",
+    "check_update",
+    "latex_delimiters_set",
+    "hide_history_when_not_logged_in",
+    "default_chuanhu_assistant_model"
+]
+
+if os.path.exists("config.json"):
+    with open("config.json", "r", encoding='utf-8') as f:
+        config = json.load(f)
+else:
+    config = {}
+
+my_api_key = config.get("openai_api_key", "_hvFFPS4VPZGn2PKFAO7D663hO74W_IQyZ0FekFdlsY")
+my_api_key = os.environ.get("OPENAI_API_KEY", my_api_key)
+
+openai.api_key = my_api_key
+openai.api_base = "https://chimeragpt.adventblocks.cc/v1"
+
 
 url = 'https://chimeragpt.adventblocks.cc/'
 model = [

@@ -19,7 +19,7 @@ from .Providers import (
     ChatgptAi,
     ChatgptLogin,
     Phind,
-    Easychat,
+    EasyChat,
     Fakeopen,
     Better,
     Alpha,
@@ -37,6 +37,10 @@ from .Providers import (
     Zeabur,
     V50,
     Chimera,
+    ClaudeAI,
+    Poe,
+    Yl
+
 
 )
 

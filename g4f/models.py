@@ -12,14 +12,14 @@ class Model:
         name: str = 'gpt-3.5-turbo'
         base_provider: str = 'openai'
         #best_provider: Provider.Provider = Provider.Easychat
-        best_provider: Provider.Provider = random.choice([Provider.GetGpt, Provider.AiService, Provider.Easychat, Provider.Aitianhu,])
-        best_providers: list = [Provider.AiService, Provider.Easychat, Provider.Aitianhu]
+        best_provider: Provider.Provider = random.choice([Provider.Zeabur, Provider.AiService, Provider.Aitianhu,])
+        best_providers: list = [Provider.Zeabur, Provider.AiService, Provider.Aitianhu]
 
     class gpt_35_turbo_0613:
         name: str = 'gpt-3.5-turbo-0613'
         base_provider: str = 'openai'
         #best_provider: Provider.Provider = Provider.Easychat
-        best_provider: Provider.Provider = random.choice([Provider.Fakeopen])
+        best_provider: Provider.Provider = random.choice([Provider.Zeabur])
         best_providers: list = [Provider.Fakeopen]
         
 
@@ -27,14 +27,14 @@ class Model:
         name: str = 'gpt-3.5-turbo-16k-0613'
         base_provider: str = 'openai'
         #best_provider: Provider.Provider = Provider.Easychat
-        best_provider: Provider.Provider = random.choice([Provider.Easychat])
-        best_providers: list = [Provider.Easychat]
+        best_provider: Provider.Provider = random.choice([Provider.Zeabur])
+        best_providers: list = [Provider.EasyChat]
 
     class gpt_35_turbo_16k:
         name: str = 'gpt-3.5-turbo-16k'
         base_provider: str = 'openai'
         #best_provider: Provider.Provider = Provider.Easychat
-        best_provider: Provider.Provider = random.choice([Provider.Kiask, Provider.Zeabur])
+        best_provider: Provider.Provider = random.choice([Provider.Zeabur])
         best_providers: list = [Provider.Zeabur]
 
     #POE
@@ -117,6 +117,11 @@ class Model:
         best_provider: Provider.Provider = Provider.Chimera
         best_providers: list = [Provider.Chimera]
 
+    class claude_2:
+        name: str = 'claude-2'
+        base_provider: str = 'anthropic'
+        best_provider: Provider.Provider = Provider.ClaudeAI
+
     class sage:
         name: str = 'sage'
         base_provider: str = 'poe'
@@ -132,8 +137,8 @@ class Model:
     class gpt_4:
         name: str = 'gpt-4'
         base_provider: str = 'openai'
-        best_provider: Provider.Provider = Provider.Chimera
-        best_providers: list = [Provider.Chimera]
+        best_provider: Provider.Provider = Provider.Yl
+        best_providers: list = [Provider.Yl]
     
     class gpt_4_0613:
         name: str = 'gpt-4-0613'
@@ -233,6 +238,8 @@ class ModelUtils:
         'claude-instant': Model.claude_instant,
         'claude-2-100k': Model.claude_2_100k,
         
+        'claude-2': Model.claude_2,
+
         'claude-instant-v1-100k': Model.claude_instant_v1_100k,
         'claude-v1-100k': Model.claude_v1_100k,
         'claude-instant-v1': Model.claude_instant_v1,
