@@ -258,8 +258,8 @@ server {
              ├─12742 nginx: worker process
              └─12743 nginx: worker process
 
-Jul 19 16:17:24 akrhin.ru systemd[1]: Starting A high performance web server and a reverse proxy server...
-Jul 19 16:17:24 akrhin.ru systemd[1]: Started A high performance web server and a reverse proxy server.
+Jul 19 16:17:24   systemd[1]: Starting A high performance web server and a reverse proxy server...
+Jul 19 16:17:24   systemd[1]: Started A high performance web server and a reverse proxy server.
 ```
 
 Если ошибок нет и все настройки выполнены правильно \- можно проверить доступность сайта через браузер.
