@@ -12,8 +12,8 @@ class Model:
         name: str = 'gpt-3.5-turbo'
         base_provider: str = 'openai'
         #best_provider: Provider.Provider = Provider.Easychat
-        best_provider: Provider.Provider = random.choice([Provider.Zeabur, Provider.AiService, Provider.Aitianhu,])
-        best_providers: list = [Provider.Zeabur, Provider.AiService, Provider.Aitianhu]
+        best_provider: Provider.Provider = random.choice([Provider.Zeabur, Provider.Yqcloud, Provider.Aitianhu])
+        best_providers: list = [Provider.Zeabur, Provider.Yqcloud, Provider.Aitianhu]
 
     class gpt_35_turbo_0613:
         name: str = 'gpt-3.5-turbo-0613'
@@ -28,7 +28,7 @@ class Model:
         base_provider: str = 'openai'
         #best_provider: Provider.Provider = Provider.Easychat
         best_provider: Provider.Provider = random.choice([Provider.Zeabur])
-        best_providers: list = [Provider.EasyChat]
+        best_providers: list = [Provider.Zeabur]
 
     class gpt_35_turbo_16k:
         name: str = 'gpt-3.5-turbo-16k'
