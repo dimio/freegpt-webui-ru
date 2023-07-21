@@ -26,4 +26,5 @@ browser_cookie3
 googletrans==4.0.0rc1
 gevent
 openai
+commentjson
 python-dotenv
