@@ -1,4 +1,5 @@
-# FreeGPT by Neurogen
+# Проект устарел и больше не поддерживается, пожалуйста загрузите новую, более лучшую версию: [NeuroGPT](https://github.com/Em1tSan/NeuroGPT)
+
 ## GPT 3.5/4
 RU: Доступ к ChatGPT с вашего ПК без VPN. Интерфейс переведен на русский язык.
 
@@ -8,6 +9,11 @@ RU: Доступ к ChatGPT с вашего ПК без VPN. Интерфейс 
 - ChatGPT-3.5-Turbo-0613
 - ChatGPT-3.5-Turbo-16K
 - ChatGPT-3.5-Turbo-16K-0613
+- GPT-4 (Нужен ключ ChimeraAPI)
+- Sage (Нужен ключ ChimeraAPI)
+- Claude Instant (Нужен ключ ChimeraAPI)
+- Claude Instant 100K (Нужен ключ ChimeraAPI)
+- Claude 2 (Нужен ключ ChimeraAPI)
 - Использование данных из сети для формирования ответов
 - Джейлбрейки для расширения возможностей и снятия цензуры
 - Контекст беседы

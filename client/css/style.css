@@ -471,8 +471,24 @@ select {
     border-radius: var(--border-radius-1);
     width: 100%;
     cursor: default;
-    border: 1px dashed var(--conversations)
+    border: 1px dashed var(--conversations);
+    order: 2; /* устанавливаем порядок 2 для .info */
 }
+
+.info-donate {
+    padding: 8px 12px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    user-select: none;
+    background: transparent;
+    border-radius: var(--border-radius-1);
+    width: 100%;
+    cursor: default;
+    border: 1px dashed var(--conversations);
+    order: 1; /* устанавливаем порядок 1 для .info-donate */
+}
+
 
 .bottom_buttons {
     width: 100%;

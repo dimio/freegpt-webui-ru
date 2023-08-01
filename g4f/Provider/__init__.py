@@ -1,7 +1,6 @@
 from . import Provider
 from .Providers import (
     Aitianhu,
-    Xiaor,
     You,
     Bing,
     Yqcloud,
@@ -20,19 +19,28 @@ from .Providers import (
     ChatgptAi,
     ChatgptLogin,
     Phind,
-    Easychat,
-    hteyun,
-    Weuseing,
+    EasyChat,
     Fakeopen,
     Better,
     Alpha,
     Nino,
     Lsdev,
-    Xiaor,
     Jayshen,
     Aws,
     DFEHub,
-    Acytoo
+    Acytoo,
+    AiService,
+    BingHuan,
+    Wewordle,
+    B88,
+    Kiask,
+    Zeabur,
+    V50,
+    Chimera,
+    ClaudeAI,
+    Poe,
+
+
 )
 
 Palm = Bard

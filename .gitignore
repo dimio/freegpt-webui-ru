@@ -146,6 +146,7 @@ dmypy.json
 cython_debug/
 
 # others
+.env
 .config/
 .upm/
 .vscode/
@@ -158,3 +159,4 @@ cython_debug/
 .idea/
 *.pyc
 g4f/__pycache__/models.cpython-310.pyc
+.env

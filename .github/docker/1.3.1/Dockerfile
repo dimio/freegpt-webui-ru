@@ -73,7 +73,7 @@ RUN git clone --depth 1 --branch ${FREEGPT_VERSION} https://github.com/Em1tSan/f
 ##################################################################
 #                   build sources
 ##################################################################
-RUN pip3 install --user --no-cache-dir -r ${FREEGPT_PATH}/requirements-docker.txt   
+RUN pip3 install --user --no-cache-dir -r ${FREEGPT_PATH}/requirements.txt   
 
 ##################################################################
 #                   fix codepage
